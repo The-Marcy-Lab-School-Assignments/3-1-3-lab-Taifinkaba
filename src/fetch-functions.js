@@ -64,33 +64,62 @@ export const getFirstThreeFantasyBooks = async () => {
     }
 };
 
-export const getAuthor = (urlKey) => {
+// export const getAuthor = (urlKey) => {
+//     const baseUrl = 'https://openlibrary.org';
+//     const endpoint = `${baseUrl}${urlKey}.json`;
+  
+//     return fetch(endpoint)
+//       .then(response => {
+//         if (!response.ok) {
+//           throw new Error('Failed to get author');
+//         }
+//         return response.json();
+//       })
+//       .then(data => {
+//         const formattedAuthor = {
+//           birthDate: data.birth_date,
+//           bio: data.bio,
+//           wikipediaLink: data.wikipedia,
+//           name: data.name,
+//           pictureUrl: data.photos && data.photos.length > 0
+//             ? `https://covers.openlibrary.org/b/id/${data.photos[0]}-M.jpg`
+//             : null
+//         };
+//         return formattedAuthor;
+//       })
+//       .catch(error => {
+//         console.warn(error.message);
+//         return null;
+//       });
+// };
+
+export const getAuthor = async (urlKey) => {
     const baseUrl = 'https://openlibrary.org';
     const endpoint = `${baseUrl}${urlKey}.json`;
-  
-    return fetch(endpoint)
-      .then(response => {
+
+    try {
+        const response = await fetch(endpoint);
+
         if (!response.ok) {
-          throw new Error('Failed to get author');
+            throw new Error('Failed to get author');
         }
-        return response.json();
-      })
-      .then(data => {
+
+        const data = await response.json();
+
+        // Format the author object as required
         const formattedAuthor = {
-          birthDate: data.birth_date,
-          bio: data.bio,
-          wikipediaLink: data.wikipedia,
-          name: data.name,
-          pictureUrl: data.photos && data.photos.length > 0
-            ? `https://covers.openlibrary.org/b/id/${data.photos[0]}-M.jpg`
-            : null
+            birthDate: data.birth_date,
+            bio: data.bio,
+            wikipediaUrl: data.wikipedia,
+            name: data.name,
+            pictureUrl: `https://covers.openlibrary.org/a/id/${data.photos[0]}-M.jpg`
         };
+
         return formattedAuthor;
-      })
-      .catch(error => {
+    } catch (error) {
         console.warn(error.message);
         return null;
-      });
+    }
 };
 
 export const createNewUser = () => {
