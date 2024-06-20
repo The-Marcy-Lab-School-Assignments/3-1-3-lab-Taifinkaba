@@ -51,10 +51,10 @@ export const getFirstThreeFantasyBooks = async () => {
         const firstThreeBooks = jsonData.works.slice(0, 3).map((work) => ({
             title: work.title,
             author: {
-                name: work.authors[0]?.name,
-                urlKey: work.authors[0]?.key,
+                name: work.authors[0].name,
+                urlKey: work.authors[0].key,
             },
-            coverUrl: `https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg`,
+            coverUrl: `https://covers.openlibrary.org/a/id/${work.cover_id}-M.jpg`,
         }));
 
         return firstThreeBooks;
