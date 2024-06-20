@@ -32,7 +32,7 @@ export const getFirstThreeFantasyBooks = () => {
       })
       .catch(error => {
         // errors and unsuccessful requests
-        console.warn('Error fetching fantasy books:', error.message);
+        console.warn("Failed to get fantasy books", error.message);
         return null;
       });
 };
