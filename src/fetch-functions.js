@@ -1,40 +1,67 @@
-export const getFirstThreeFantasyBooks = () => {
+// export const getFirstThreeFantasyBooks = () => {
+//     const url = 'https://openlibrary.org/subjects/fantasy.json';
+
+//     return fetch(url)
+//       .then(response => {
+//         if (!response.ok) {
+//           throw new Error('Failed to get fantasy books');
+//         }
+//         return response.json();
+//       })
+//       .then(data => {
+//         const firstThreeBooks = data.works.slice(0, 3).map(work => {
+//           const title = work.title;
+  
+//           let author = {};
+//           if (work.authors && work.authors.length > 0) {
+//             author.name = work.authors[0].name;
+//             author.urlKey = work.authors[0].key;
+//           }
+  
+//           const coverId = work.cover_id;
+//           const coverUrl = `https://covers.openlibrary.org/a/id/${coverId}-M.jpg`;
+  
+//           return {
+//             title,
+//             author,
+//             coverUrl
+//           };
+//         });
+  
+//         return firstThreeBooks;
+//       })
+//       .catch(error => {
+//         // errors and unsuccessful requests
+//         console.warn("Failed to get fantasy books", error.message);
+//         return null;
+//       });
+// };
+
+export const getFirstThreeFantasyBooks = async () => {
     const url = 'https://openlibrary.org/subjects/fantasy.json';
 
-    return fetch(url)
-      .then(response => {
+    try {
+        const response = await fetch(url);
+
         if (!response.ok) {
-          throw new Error('Failed to get fantasy books');
+            throw new Error('Failed to get fantasy books');
         }
-        return response.json();
-      })
-      .then(data => {
-        const firstThreeBooks = data.works.slice(0, 3).map(work => {
-          const title = work.title;
-  
-          let author = {};
-          if (work.authors && work.authors.length > 0) {
-            author.name = work.authors[0].name;
-            author.urlKey = work.authors[0].key;
-          }
-  
-          const coverId = work.cover_id;
-          const coverUrl = `https://covers.openlibrary.org/a/id/${coverId}-M.jpg`;
-  
-          return {
-            title,
-            author,
-            coverUrl
-          };
-        });
-  
+
+        const jsonData = await response.json();
+        const firstThreeBooks = jsonData.works.slice(0, 3).map((work) => ({
+            title: work.title,
+            author: {
+                name: work.authors[0]?.name,
+                urlKey: work.authors[0]?.key,
+            },
+            coverUrl: `https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg`,
+        }));
+
         return firstThreeBooks;
-      })
-      .catch(error => {
-        // errors and unsuccessful requests
-        console.warn("Failed to get fantasy books", error.message);
+    } catch (error) {
+        console.warn(error.message);
         return null;
-      });
+    }
 };
 
 export const getAuthor = (urlKey) => {
