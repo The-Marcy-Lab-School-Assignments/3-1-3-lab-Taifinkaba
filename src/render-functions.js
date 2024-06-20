@@ -21,6 +21,18 @@ export const renderBookList = (bookListEl, books) => {
 }
 
 export const renderAuthorInfo = (authorInfoEl, author) => {
+    authorInfoEl.innerHTML = '';
+
+    const h2 = document.createElement('h2');
+    const img = document.createElement('img');
+    const bornP = document.createElement('p');
+    const bioP = document.createElement('p');
+    const aTag  = document.createElement('a');
+
+    h2.textContent = author.name;
+
+    
+
 }
 
 export const renderNewUserForm = (newUserFormEl) => {
