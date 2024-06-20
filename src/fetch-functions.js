@@ -37,7 +37,33 @@ export const getFirstThreeFantasyBooks = () => {
       });
 };
 
-export const getAuthor = () => {
+export const getAuthor = (urlKey) => {
+    const baseUrl = 'https://openlibrary.org';
+    const endpoint = `${baseUrl}${urlKey}.json`;
+  
+    return fetch(endpoint)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to get author');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const formattedAuthor = {
+          birthDate: data.birth_date,
+          bio: data.bio,
+          wikipediaLink: data.wikipedia,
+          name: data.name,
+          pictureUrl: data.photos && data.photos.length > 0
+            ? `https://covers.openlibrary.org/b/id/${data.photos[0]}-M.jpg`
+            : null
+        };
+        return formattedAuthor;
+      })
+      .catch(error => {
+        console.warn(error.message);
+        return null;
+      });
 };
 
 export const createNewUser = () => {
