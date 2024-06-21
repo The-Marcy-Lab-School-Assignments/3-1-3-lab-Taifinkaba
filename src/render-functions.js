@@ -27,12 +27,27 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
     const img = document.createElement('img');
     const bornP = document.createElement('p');
     const bioP = document.createElement('p');
-    const aTag  = document.createElement('a');
+    const aTag = document.createElement('a');
 
     h2.textContent = author.name;
 
-    
+    img.src = author.picture;
+    img.alt = `A picture of ${author.name}`;
 
+    bornP.textContent = `Born: ${author.birthDate}`;
+
+    bioP.textContent = author.bio;
+
+    aTag.href = author.wikipediaUrl;
+    aTag.textContent = 'Wikipedia Link';
+
+    authorInfoEl.append(
+        h2,
+        img,
+        bornP,
+        bioP,
+        aTag
+    );
 }
 
 export const renderNewUserForm = (newUserFormEl) => {
