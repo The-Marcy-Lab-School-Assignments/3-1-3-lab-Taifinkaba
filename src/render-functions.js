@@ -9,6 +9,11 @@ export const renderBookList = (bookListEl, books) => {
 
         img.src = book.coverUrl;
         img.alt =  `An old cover  of ${book.title}`
+        /*
+            FEEDBACK: 
+                One small issue here, in the alt string, 
+                you added 2 spaces instead of one
+        */
 
         p.textContent = `Title: ${book.title}`
 
@@ -22,7 +27,7 @@ export const renderBookList = (bookListEl, books) => {
 
 export const renderAuthorInfo = (authorInfoEl, author) => {
     authorInfoEl.innerHTML = '';
-
+console.log(author)
     const h2 = document.createElement('h2');
     const img = document.createElement('img');
     const bornP = document.createElement('p');
@@ -33,6 +38,12 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
 
     img.src = author.picture;
     img.alt = `A picture of ${author.name}`;
+    /*
+        FEEDBACK:
+            Great job on this function overall, however, 
+            author.picture doesn't exist, make sure
+            to see what key holds the picture url. 
+    */
 
     bornP.textContent = `Born: ${author.birthDate}`;
 
@@ -93,6 +104,10 @@ export const renderNewUserForm = (newUserFormEl) => {
         languageLabel,
         createUserButton
     );
+    /*
+        FEEDBACK:
+            Make sure to add the for attribute to the labels to match the inputs id's
+    */
 }
 
 export const renderNewUser = (newUserEl, newUser) => {
