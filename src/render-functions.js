@@ -8,11 +8,13 @@ export const renderBookList = (bookListEl, books) => {
         const button = document.createElement('button');
 
         img.src = book.coverUrl;
-        img.alt =  `An old cover  of ${book.title}`
+        img.alt =  `An old cover of ${book.title}`
         /*
             FEEDBACK: 
                 One small issue here, in the alt string, 
                 you added 2 spaces instead of one
+            TAI:
+            FIXED
         */
 
         p.textContent = `Title: ${book.title}`
