@@ -8,7 +8,7 @@ export const renderBookList = (bookListEl, books) => {
         const button = document.createElement('button');
 
         img.src = book.coverUrl;
-        img.alt =  `An old cover of ${book.title}`
+        img.alt = `An old cover of ${book.title}`
         /*
             FEEDBACK: 
                 One small issue here, in the alt string, 
@@ -29,7 +29,8 @@ export const renderBookList = (bookListEl, books) => {
 
 export const renderAuthorInfo = (authorInfoEl, author) => {
     authorInfoEl.innerHTML = '';
-console.log(author)
+    console.log(author);
+
     const h2 = document.createElement('h2');
     const img = document.createElement('img');
     const bornP = document.createElement('p');
@@ -38,13 +39,15 @@ console.log(author)
 
     h2.textContent = author.name;
 
-    img.src = author.picture;
+    img.src = author.pictureUrl;
     img.alt = `A picture of ${author.name}`;
     /*
         FEEDBACK:
             Great job on this function overall, however, 
             author.picture doesn't exist, make sure
             to see what key holds the picture url. 
+        TAI:
+            FIXED
     */
 
     bornP.textContent = `Born: ${author.birthDate}`;
@@ -54,13 +57,7 @@ console.log(author)
     aTag.href = author.wikipediaUrl;
     aTag.textContent = 'Wikipedia Link';
 
-    authorInfoEl.append(
-        h2,
-        img,
-        bornP,
-        bioP,
-        aTag
-    );
+    authorInfoEl.append(h2, img, bornP, bioP, aTag);
 }
 
 export const renderNewUserForm = (newUserFormEl) => {
@@ -76,17 +73,21 @@ export const renderNewUserForm = (newUserFormEl) => {
     const createUserButton = document.createElement('button');
 
     usernameLabel.textContent = 'Username';
+    usernameLabel.setAttribute('for', 'username');
     usernameInput.id = 'username';
     usernameInput.name = 'username';
+    usernameInput.type = 'text';
     usernameLabel.append(usernameInput);
 
     coolLabel.textContent = 'Is this user cool?';
+    coolLabel.setAttribute('for', 'is-cool');
     coolInput.id = 'is-cool';
     coolInput.name = 'isCool';
     coolInput.type = 'checkbox';
     coolLabel.append(coolInput);
 
     languageLabel.textContent = 'Favorite Language';
+    languageLabel.setAttribute('for', 'favorite-language');
     languageSelect.id = 'favorite-language';
     languageSelect.name = 'favoriteLanguage';
 
