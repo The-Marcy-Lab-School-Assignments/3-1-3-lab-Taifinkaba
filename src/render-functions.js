@@ -61,45 +61,59 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
 }
 
 export const renderNewUserForm = (newUserFormEl) => {
-    newUserFormEl.innerHTML = '';
+    // newUserFormEl.innerHTML = '';
 
-    const usernameLabel = document.createElement('label');
-    const usernameInput = document.createElement('input');
-    const coolLabel = document.createElement('label');
-    const coolInput = document.createElement('input');
-    const languageLabel = document.createElement('label');
-    const languageSelect = document.createElement('select');
-    const languages = ['None', 'JavaScript', 'Python', 'Ruby'];
-    const createUserButton = document.createElement('button');
+    // const usernameLabel = document.createElement('label');
+    // const usernameInput = document.createElement('input');
+    // const coolLabel = document.createElement('label');
+    // const coolInput = document.createElement('input');
+    // const languageLabel = document.createElement('label');
+    // const languageSelect = document.createElement('select');
+    // const languages = ['None', 'JavaScript', 'Python', 'Ruby'];
+    // const createUserButton = document.createElement('button');
 
-    usernameLabel.textContent = 'Username';
-    usernameLabel.setAttribute('for', 'username');
-    usernameInput.id = 'username';
-    usernameInput.name = 'username';
-    usernameInput.type = 'text';
-    usernameLabel.append(usernameInput);
+    // usernameLabel.textContent = 'Username';
+    // usernameLabel.setAttribute('for', 'username');
+    // usernameInput.id = 'username';
+    // usernameInput.name = 'username';
+    // usernameInput.type = 'text';
+    // usernameLabel.append(usernameInput);
 
-    coolLabel.textContent = 'Is this user cool?';
-    coolLabel.setAttribute('for', 'is-cool');
-    coolInput.id = 'is-cool';
-    coolInput.name = 'isCool';
-    coolInput.type = 'checkbox';
-    coolLabel.append(coolInput);
+    // coolLabel.textContent = 'Is this user cool?';
+    // coolLabel.setAttribute('for', 'is-cool');
+    // coolInput.id = 'is-cool';
+    // coolInput.name = 'isCool';
+    // coolInput.type = 'checkbox';
+    // coolLabel.append(coolInput);
 
-    languageLabel.textContent = 'Favorite Language';
-    languageLabel.setAttribute('for', 'favorite-language');
-    languageSelect.id = 'favorite-language';
-    languageSelect.name = 'favoriteLanguage';
+    // languageLabel.textContent = 'Favorite Language';
+    // languageLabel.setAttribute('for', 'favorite-language');
+    // languageSelect.id = 'favorite-language';
+    // languageSelect.name = 'favoriteLanguage';
 
-    languages.forEach(language => {
-        const option = document.createElement('option');
-        option.textContent = language;
-        option.value = language.toLowerCase();
-        languageSelect.append(option);
-    });
-    languageLabel.append(languageSelect);
+    // languages.forEach(language => {
+    //     const option = document.createElement('option');
+    //     option.textContent = language;
+    //     option.value = language.toLowerCase();
+    //     languageSelect.append(option);
+    // });
+    // languageLabel.append(languageSelect);
 
-    createUserButton.textContent = 'Create User';
+    // createUserButton.textContent = 'Create User';
+    newUserFormEl.innerHTML = `
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username">
+  <label for="is-cool">Is this user cool?</label>
+  <input type="checkbox" id="is-cool" name="isCool">
+  <label for="favorite-language">Favorite Language</label>
+  <select id="favorite-language" name="favoriteLanguage">
+    <option value="None">None</option>
+    <option value="JavaScript">JavaScript</option>
+    <option value="Python">Python</option>
+    <option value="Ruby">Ruby</option>
+  </select>
+  <button type="submit">Create User</button>
+  `
 
     newUserFormEl.append(
         usernameLabel,
