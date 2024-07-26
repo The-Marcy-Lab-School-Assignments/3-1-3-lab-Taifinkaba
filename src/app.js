@@ -53,7 +53,6 @@ export default async function app(appDiv) {
     const newUser = await createNewUser(userData);
     renderNewUser(newUserEl, newUser);
   });
-
 }
 /*
   FEEDBACK:
