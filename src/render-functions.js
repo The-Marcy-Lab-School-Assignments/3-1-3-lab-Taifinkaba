@@ -123,7 +123,7 @@ export const renderNewUserForm = (newUserFormEl) => {
     );
     /*
         FEEDBACK:
-            Make sure to add the for attribute to the labels to match the inputs id's
+            Make sure to remove the appending to newUserFormEl since you used inner.html instead
     */
 }
 

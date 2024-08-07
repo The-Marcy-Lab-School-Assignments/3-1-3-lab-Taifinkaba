@@ -28,6 +28,11 @@ export default async function app(appDiv) {
   appDiv.append(newUserFormEl);
   // Render the form!
   renderNewUserForm;
+  /*
+  FEEDBACK:
+    make sure to invoke the 
+    renderNewUserForm function while also passing in newUserFormEl
+  */
 
   // Fetch the books!
   const books = await getFirstThreeFantasyBooks();
